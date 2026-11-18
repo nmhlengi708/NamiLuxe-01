@@ -6,6 +6,13 @@ import { createClient } from '@supabase/supabase-js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
+import fs from 'node:fs';
+
+console.log('SERVER DIRECTORY:', __dirname);
+console.log('CURRENT DIRECTORY:', process.cwd());
+console.log('PUBLIC EXISTS:', fs.existsSync(path.join(__dirname, 'public')));
+console.log('INDEX EXISTS:', fs.existsSync(path.join(__dirname, 'public', 'index.html')));
+console.log('ROOT FILES:', fs.readdirSync(__dirname));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
